@@ -1,96 +1,103 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Puzzle Game</title>
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/image-puzzle.css" rel="stylesheet" />
-    <script src="js/jquery-2.1.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/image-puzzle.js"></script>
+    <!-- <link href="css/style.css" rel="stylesheet" />
+    <link href="css/image-puzzle.css" rel="stylesheet" /> -->
+    <script src="http://raw.githack.com/infinityMark/test.github.io/main/jquery-2.1.1.min.js"></script>
+    <script src="http://raw.githack.com/infinityMark/test.github.io/main/jquery-ui.js"></script>
+    <script src="http://raw.githack.com/infinityMark/test.github.io/main/image-puzzle.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+HK&display=swap" rel="stylesheet">
+
     <style>
-    ﻿body {
-    font-family: 'Segoe UI', Calibri, Arial;
-    margin:0;
-}
-h2{
-    font-weight:normal;
-    text-align:center;
-}
-h3{
-    font-weight:normal;
-    margin:3px 0px;
-    text-align:center;
-}
-	    ﻿#collage hr{
-    border:none;
-    border-top:2px solid #f5f2f2;
-    height:1px;
-}
+        body {
+            /* font-family: 'Segoe UI', Calibri, Arial; */
+            font-family: 'Ma Shan Zheng', cursive;
+            font-family: 'Noto Sans HK', sans-serif;
+            font-family: 'VT323', monospace;
+            margin:0;
+        }
+        h2{
+            font-weight:normal;
+            text-align:center;
+        }
+        h3{
+            font-weight:normal;
+            margin:3px 0px;
+            text-align:center;
+        }
+        #collage hr{
+            border:none;
+            border-top:2px solid #f5f2f2;
+            height:1px;
+        }
 
-#collage #playPanel {
-    background-color:#c2defc;
-    padding:10px 0px;
-    margin: 10px auto;
-    max-width:800px;
-    width:95%;
-}
+        #collage #playPanel {
+            background-color:#c2defc;
+            padding:10px 0px;
+            margin: 10px auto;
+            max-width:800px;
+            width:95%;
+        }
 
-#collage #actualImageBox {
-    display: inline-block;
-    font-size:0.8em;
-    margin: 10px 10px;
-    vertical-align: top;
-    width:280px;
-}
+        #collage #actualImageBox {
+            display: inline-block;
+            font-size:0.8em;
+            margin: 10px 10px;
+            vertical-align: top;
+            width:280px;
+        }
 
-#collage #stepBox, #collage #timeBox {
-    display:inline-block;
-    width:48%;
-}
+        #collage #stepBox, #collage #timeBox {
+            display:inline-block;
+            width:48%;
+        }
 
-#collage #stepBox div {
-    background-color:#c2defc;
-    display:inline-block;
-    padding:1px 4px;
-    margin: 0px auto;
-    max-width:800px;
-}
+        #collage #stepBox div {
+            background-color:#c2defc;
+            display:inline-block;
+            padding:1px 4px;
+            margin: 0px auto;
+            max-width:800px;
+        }
 
-#collage img#actualImage{
-    border:2px solid #a46;
-    height:280px;
-    width:280px;
-}
+        #collage img#actualImage{
+            border:2px solid #a46;
+            height:280px;
+            width:280px;
+        }
 
-#collage #sortable {
-    border:2px solid #a46;
-    list-style-type: none;
-    display: inline-block;
-    margin: 10px;
-    padding: 0;
-    width: 400px;
-}
+        #collage #sortable {
+            border:2px solid #a46;
+            list-style-type: none;
+            display: inline-block;
+            margin: 10px;
+            padding: 0;
+            width: 400px;
+        }
 
-    #collage #sortable li {
-        background-size: 400% 400%;
-        border: none;
-        cursor: pointer;
-        margin: 0;
-        padding: 0;
-        float: left;
-        width: 100px;
-        height: 100px;
-    }
+            #collage #sortable li {
+                background-size: 400% 400%;
+                border: none;
+                cursor: pointer;
+                margin: 0;
+                padding: 0;
+                float: left;
+                width: 100px;
+                height: 100px;
+            }
 
-#collage button  {
-    background-color:#f5f2f2;
-    border:1px solid #cce;
-    display: inline;
-    font-size: 14px;
-    height: auto;
-    width: auto;
-    padding: 3px 8px;
-}
+        #collage button  {
+            background-color:#f5f2f2;
+            border:1px solid #cce;
+            display: inline;
+            font-size: 14px;
+            height: auto;
+            width: auto;
+            padding: 3px 8px;
+        }
     </style>
 </head>
 <body>
@@ -138,12 +145,14 @@ h3{
         </div>
 
         <script>
-		var images = [
-                { src: 'https://raw.githubusercontent.com/infinityMark/test.github.io/main/psalm-23.jpg', title: 'Psalm 23' },
-                { src: 'https://raw.githubusercontent.com/infinityMark/test.github.io/main/psalm-8.jpg', title: 'Psalm 8' },
-                { src: 'https://raw.githubusercontent.com/infinityMark/test.github.io/main/genesis-1.jpg', title: 'Genesis 1:26-27' },
-                { src: 'https://raw.githubusercontent.com/infinityMark/test.github.io/main/proverbs-8.jpg', title: 'Proverbs 8:26-27' },
-                { src: 'https://raw.githubusercontent.com/infinityMark/test.github.io/main/proverbs-30.jpg', title: 'Proverbs 30:24-28' }
+            let images = [
+                { src: 'https://raw.githubusercontent.com/infinityMark/test.github.io/main/psalm-23.jpg', title: 'Psalm-a'},
+                { src: 'https://raw.githubusercontent.com/infinityMark/test.github.io/main/proverbs-8.jpg', title: 'Psalm-Earth'},
+                { src: 'https://raw.githubusercontent.com/infinityMark/test.github.io/main/genesis-1.jpg', title: 'Genesis'},
+                { src: 'https://raw.githubusercontent.com/infinityMark/test.github.io/main/proverbs-8.jpg', title: 'Proverbs'},
+                { src: 'https://raw.githubusercontent.com/infinityMark/test.github.io/main/volcano-fuji-day-beautiful-mt.jpg', title: '富士山' },
+                { src: 'https://raw.githubusercontent.com/infinityMark/test.github.io/main/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass.jpg', title: '落日' },
+                { src: 'https://raw.githubusercontent.com/infinityMark/test.github.io/main/tung-bua-tong-mexican-sunflower-field-sunset-mae-hong-son-province-thailand.jpg', title: '山野' }
             ];
 
             $(function () {
@@ -161,98 +170,7 @@ h3{
             });
             function rules() {
                 alert('Rearrange the pieces so that you get a sample image. \nThe steps taken are counted');
-	    }
-		﻿var timerFunction;
-
-var imagePuzzle = {
-    stepCount: 0,
-    startTime: new Date().getTime(),
-    startGame: function (images, gridSize) {
-        this.setImage(images, gridSize);
-        $('#playPanel').show();
-        $('#sortable').randomize();
-        this.enableSwapping('#sortable li');
-        this.stepCount = 0;
-        this.startTime = new Date().getTime();
-        this.tick();
-    },
-    tick: function () {
-        var now = new Date().getTime();
-        var elapsedTime = parseInt((now - imagePuzzle.startTime) / 1000, 10);
-        $('#timerPanel').text(elapsedTime);
-        timerFunction = setTimeout(imagePuzzle.tick, 1000);
-    },
-    enableSwapping: function (elem) {
-        $(elem).draggable({
-            snap: '#droppable',
-            snapMode: 'outer',
-            revert: "invalid",
-            helper: "clone"
-        });
-        $(elem).droppable({
-            drop: function (event, ui) {
-                var $dragElem = $(ui.draggable).clone().replaceAll(this);
-                $(this).replaceAll(ui.draggable);
-
-                currentList = $('#sortable > li').map(function (i, el) { return $(el).attr('data-value'); });
-                if (isSorted(currentList))
-                    $('#actualImageBox').empty().html($('#gameOver').html());
-                else {
-                    var now = new Date().getTime();
-                    imagePuzzle.stepCount++;
-                    $('.stepCount').text(imagePuzzle.stepCount);
-                    $('.timeCount').text(parseInt((now - imagePuzzle.startTime) / 1000, 10));
-                }
-
-                imagePuzzle.enableSwapping(this);
-                imagePuzzle.enableSwapping($dragElem);
             }
-        });
-    },
-
-    setImage: function (images, gridSize) {
-        console.log(gridSize);
-        gridSize = gridSize || 4; // If gridSize is null or not passed, default it as 4.
-        console.log(gridSize);
-        var percentage = 100 / (gridSize - 1);
-        var image = images[Math.floor(Math.random() * images.length)];
-        $('#imgTitle').html(image.title);
-        $('#actualImage').attr('src', image.src);
-        $('#sortable').empty();
-        for (var i = 0; i < gridSize * gridSize; i++) {
-            var xpos = (percentage * (i % gridSize)) + '%';
-            var ypos = (percentage * Math.floor(i / gridSize)) + '%';
-            var li = $('<li class="item" data-value="' + (i) + '"></li>').css({
-                'background-image': 'url(' + image.src + ')',
-                'background-size': (gridSize * 100) + '%',
-                'background-position': xpos + ' ' + ypos,
-                'width': 400 / gridSize,
-                'height': 400 / gridSize
-            });
-            $('#sortable').append(li);
-        }
-        $('#sortable').randomize();
-    }
-};
-
-function isSorted(arr) {
-    for (var i = 0; i < arr.length - 1; i++) {
-        if (arr[i] != i)
-            return false;
-    }
-    return true;
-}
-$.fn.randomize = function (selector) {
-    var $elems = selector ? $(this).find(selector) : $(this).children(),
-        $parents = $elems.parent();
-
-    $parents.each(function () {
-        $(this).children(selector).sort(function () {
-            return Math.round(Math.random()) - 0.5;
-        }).remove().appendTo(this);
-    });
-    return this;
-};
         </script>
     </div>
 </body>
